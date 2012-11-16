@@ -1,6 +1,6 @@
 # Zipsy
 
-Zip code data without external dependencies
+US zip code data without external dependencies
 
 ## Usage
 

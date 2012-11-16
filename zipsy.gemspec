@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Zipsy::VERSION
   gem.authors       = ["Andrew Kane"]
   gem.email         = ["acekane1@gmail.com"]
-  gem.description   = %q{Zip code data without external dependencies}
-  gem.summary       = %q{Zip code data without external dependencies}
+  gem.description   = %q{US zip code data without external dependencies}
+  gem.summary       = %q{US zip code data without external dependencies}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
