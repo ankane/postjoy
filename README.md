@@ -27,6 +27,17 @@ Zipsy.find("123456")
 # nil
 ```
 
+Also adds zip code validation to Rails 3
+
+```ruby
+class User < ActiveRecord::Base
+  validates :zip_code, :zip_code => true
+  # ... more code ....
+end
+```
+
+Nonexistent and decommissioned zip codes are not valid
+
 ## Sources
 
 City, state, latitude, longitude, and decommissioned from [federalgovernmentzipcodes.us](http://federalgovernmentzipcodes.us)
