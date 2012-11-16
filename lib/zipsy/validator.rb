@@ -3,7 +3,7 @@ module ActiveModel
     class ZipCodeValidator < ActiveModel::EachValidator
 
       def initialize(options)
-        options.reverse_merge!(:message => "is not a valid zip code")
+        options.reverse_merge!(:message => "is not valid")
         super(options)
       end
 
