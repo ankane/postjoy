@@ -17,8 +17,16 @@ task :create do
   # read from csv
   CSV.foreach "#{dir}/zip_codes.csv", headers: true do |row|
     zip_code = row["Zipcode"]
+
+    city =
+    if row["ZipCodeType"] == "MILITARY"
+      row["City"]
+    else
+      row["City"].split(" ").map {|w| w.capitalize }.join(" ")
+    end
+
     zip_codes[zip_code] = {
-      city: row["City"].split(" ").map {|w| w.capitalize }.join(" "),
+      city: city,
       state: row["State"],
       lat: row["Lat"].to_f,
       lng: row["Long"].to_f,
