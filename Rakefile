@@ -1,43 +1,31 @@
 require "bundler/gem_tasks"
-
-# tests
 require "rake/testtask"
+
+task :default => :test
 Rake::TestTask.new do |t|
   t.libs << "test"
+  t.pattern = "test/**/*_test.rb"
 end
 
-# create dump
 task :create do
   require "csv"
-  require "tzip"
 
   dir = File.expand_path("..", __FILE__)
-  zip_codes = {}
+  postal_codes = {}
 
   # read from csv
-  CSV.foreach "#{dir}/zip_codes.csv", headers: true do |row|
-    zip_code = row["Zipcode"]
-
-    city =
-    if row["ZipCodeType"] == "MILITARY"
-      row["City"]
-    else
-      row["City"].split(" ").map {|w| w.capitalize }.join(" ")
-    end
-
-    zip_codes[zip_code] = {
-      city: city,
-      state: row["State"],
-      lat: row["Lat"].to_f,
-      lng: row["Long"].to_f,
-      time_zone: ActiveSupport::TimeZone.find_by_zipcode(zip_code),
-      decommissioned: row["Decommisioned"] == "true"
-      # estimated_population: row["EstimatedPopulation"].to_i
+  CSV.foreach "#{dir}/US.txt", col_sep: "\t" do |row|
+    postal_codes[row[1]] = {
+      city: row[2],
+      state: row[3],
+      state_code: row[4],
+      latitude: row[9].to_f,
+      longitude: row[10].to_f
     }
   end
 
   # save to file
-  File.open("#{dir}/lib/zipsy/zip_codes.dump", "w") do |f|
-    Marshal.dump zip_codes, f
+  File.open("#{dir}/postal_codes.dump", "w") do |f|
+    Marshal.dump postal_codes, f
   end
 end

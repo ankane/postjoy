@@ -1,45 +1,54 @@
-# Zipsy
+# Postjoy
 
-US zip code data without external dependencies
+Postal codes made easy
 
-## Usage
+## Get Started
 
-Add it to your Gemfile
+Add this line to your application’s Gemfile:
 
 ```ruby
-gem "zipsy", git: "https://github.com/ankane/zipsy"
+gem 'postjoy'
 ```
 
-Call it
+Lookup postal code
 
 ```ruby
-Zipsy.find("94108")
-# {
-#   :city=>"San Francisco",
-#   :state=>"CA",
-#   :lat=>37.79,
-#   :lng=>-122.4,
-#   :time_zone=>"Pacific Time (US & Canada)",
-#   :decommissioned=>false
-# }
-
-Zipsy.find("123456")
-# nil
+Postjoy.find(94109)
+# =>
+{
+  city: "San Francisco",
+  state: "California",
+  state_code: "CA",
+  latitude: 37.7917,
+  longitude: -122.4186
+}
 ```
 
-Also adds zip code validation to Rails 3
+Returns `nil` if the postal code does not exist
+
+## Validations
+
+Also adds validations for Rails
 
 ```ruby
-class User < ActiveRecord::Base
-  validates :zip_code, :zip_code => true
-  # ... more code ....
+class Address < ActiveRecord::Base
+  validates :postal_code, postal_code: true
 end
 ```
 
-Nonexistent and decommissioned zip codes are not valid
+## Credit
 
-## Sources
+Data from [GeoNames](http://download.geonames.org/export/zip/)
 
-City, state, latitude, longitude, and decommissioned from [federalgovernmentzipcodes.us](http://federalgovernmentzipcodes.us)
+## TODO
 
-Time zone from the [tzip](https://github.com/farski/TZip) gem
+- international postal codes
+
+## Contributing
+
+Everyone is encouraged to help improve this project. Here are a few ways you can help:
+
+- [Report bugs](https://github.com/ankane/postjoy/issues)
+- Fix bugs and [submit pull requests](https://github.com/ankane/postjoy/pulls)
+- Write, clarify, or fix documentation
+- Suggest or add new features
