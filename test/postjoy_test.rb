@@ -13,7 +13,7 @@ class TestPostjoy < Minitest::Test
     assert_equal expected, Postjoy.find(94109)
   end
 
-  def test_find_for_non_existent_zip_code
+  def test_find_for_non_existent_postal_code
     assert_nil Postjoy.find(123456)
   end
 
