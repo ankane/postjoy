@@ -36,16 +36,6 @@ class Address < ActiveRecord::Base
 end
 ```
 
-## Update Postal Codes
-
-Download updated list from [GeoNames](http://download.geonames.org/export/zip/)
-
-Once you have updated `US.txt` with the new file build the `postal_codes.dump` with the following command
-
-```ruby
-rake create
-```
-
 ## Credit
 
 Data from [GeoNames](http://download.geonames.org/export/zip/)
@@ -62,3 +52,9 @@ Everyone is encouraged to help improve this project. Here are a few ways you can
 - Fix bugs and [submit pull requests](https://github.com/ankane/postjoy/pulls)
 - Write, clarify, or fix documentation
 - Suggest or add new features
+
+To update postal codes, download the updated list from [GeoNames](http://download.geonames.org/export/zip/) to `US.txt` and run:
+
+```ruby
+rake create
+```
