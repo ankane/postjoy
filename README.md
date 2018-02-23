@@ -36,6 +36,16 @@ class Address < ActiveRecord::Base
 end
 ```
 
+## Update Postal Codes
+
+Download updated list from [GeoNames](http://download.geonames.org/export/zip/)
+
+Once you have updated `US.txt` with the new file build the `postal_codes.dump` with the following command
+
+```ruby
+rake create
+```
+
 ## Credit
 
 Data from [GeoNames](http://download.geonames.org/export/zip/)
