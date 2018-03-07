@@ -8,9 +8,15 @@ module ActiveModel
       end
 
       def validate_each(record, attribute, value)
-        if !Postjoy.find(value)
+        unless Postjoy.find(sanitized(value))
           record.errors.add(attribute, options.fetch(:message), value: value)
         end
+      end
+
+      private
+
+      def sanitized(value)
+        value.to_s.split('-').first
       end
     end
   end
