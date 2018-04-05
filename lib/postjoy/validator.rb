@@ -16,6 +16,7 @@ module ActiveModel
       private
 
       def sanitized(value)
+        return value if options[:allow_extended] != true
         value.to_s.split('-').first
       end
     end
