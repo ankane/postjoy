@@ -8,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Postjoy::VERSION
   spec.authors       = ["Andrew Kane"]
   spec.email         = ["andrew@chartkick.com"]
-  spec.summary       = %q{Postal codes made easy}
-  spec.description   = %q{Postal codes made easy}
+  spec.summary       = "Postal codes made easy"
   spec.homepage      = "https://github.com/ankane/postjoy"
   spec.license       = "MIT"
 
@@ -18,7 +17,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "minitest"
+  spec.add_development_dependency "activerecord"
+  spec.add_development_dependency "sqlite3"
 end

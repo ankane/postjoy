@@ -1,7 +1,6 @@
 require_relative "test_helper"
 
 class TestPostjoy < Minitest::Test
-
   def test_find
     expected = {
       city: "San Francisco",
@@ -17,4 +16,8 @@ class TestPostjoy < Minitest::Test
     assert_nil Postjoy.find(123456)
   end
 
+  def test_validation
+    assert User.new(postal_code: "12345").valid?
+    assert !User.new(postal_code: "123456").valid?
+  end
 end
